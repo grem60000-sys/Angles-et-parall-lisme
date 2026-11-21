@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#fffaf0">
+<title>Les angles – 5e</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fs:21px;--lh:1.75;--ls:.03em;--ws:.12em;--bg:#fffaf0;--card:#fff;--ink:#1f2937;--soft:#5b6472;
+--c1:#2563eb;--c1bg:#dbeafe;--c2:#ea580c;--c2bg:#ffedd5;--par:#dc2626;--sec:#334155;--com:#16a34a;
+--ok:#166534;--okbg:#dcfce7;--ko:#92400e;--kobg:#fef3c7;--acc:#7c3aed;--accbg:#ede9fe}
+*{box-sizing:border-box}
+html{font-size:var(--fs)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Lexend,Verdana,Arial,sans-serif;line-height:var(--lh);letter-spacing:var(--ls);word-spacing:var(--ws);-webkit-text-size-adjust:100%;touch-action:manipulation}
+body.spaced{--lh:2.05;--ls:.08em;--ws:.28em}
+button{font-family:inherit;font-size:1rem;letter-spacing:inherit;cursor:pointer;color:inherit}
+header{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:.4rem;padding:.4rem .6rem;background:#fff;border-bottom:3px solid #eee6d6}
+header h1{flex:1;font-size:1rem;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hbtn{min-width:52px;height:52px;border-radius:14px;border:2px solid #e5dcc8;background:#fffdf7;font-weight:700;font-size:.95rem;padding:0 .5rem}
+main{max-width:900px;margin:0 auto;padding:1rem .9rem 5rem}
+.screen{display:none}.screen.on{display:block}
+h2{font-size:1.35rem;margin:.3rem 0 .8rem;line-height:1.35}
+h3{font-size:1.1rem;margin:1rem 0 .4rem}
+p{margin:.5rem 0}
+b,strong{font-weight:700}
+.kw{color:var(--acc);background:var(--accbg);padding:0 .25em;border-radius:6px}
+.cb{color:var(--c1);font-weight:700}.co{color:var(--c2);font-weight:700}
+.card{background:var(--card);border-radius:22px;padding:1rem 1.1rem;box-shadow:0 3px 0 #eee6d6;border:2px solid #f0e8d8;margin:.8rem 0}
+.def{border:3px solid var(--par);border-radius:16px;padding:.6rem .9rem;background:#fff;margin:.7rem 0}
+.def .tag{display:inline-block;background:var(--par);color:#fff;border-radius:8px;padding:0 .5em;font-size:.8rem;font-weight:700;margin-bottom:.2rem}
+.prop{border-color:var(--acc)}.prop .tag{background:var(--acc)}
+.astuce{background:#fff7d6;border-left:8px solid #facc15;border-radius:12px;padding:.6rem .9rem;margin:.7rem 0}
+ol,ul{margin:.3rem 0;padding-left:1.6rem}li{margin:.25rem 0}
+.spk{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:2px solid #d9cfb8;background:#fff;font-size:1.1rem;margin-right:.45rem;vertical-align:middle;flex:none}
+.spk:active{transform:scale(.92)}
+/* notation angle avec chapeau */
+.ang{position:relative;display:inline-block;padding-top:.32em;line-height:1.15;white-space:nowrap;font-weight:700}
+.ang::before{content:"";position:absolute;left:-.05em;right:-.05em;top:0;height:.42em;background:no-repeat center/100% 100% url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M3 18 L50 3 L97 18' fill='none' stroke='%231f2937' stroke-width='2.5' vector-effect='non-scaling-stroke'/></svg>")}
+.ang b{color:var(--par)}
+/* home */
+.hero{text-align:center;margin:.4rem 0 1rem}
+.hero .big{font-size:2.6rem;line-height:1}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.9rem}
+.tile{display:flex;align-items:center;gap:.8rem;text-align:left;border:3px solid #eadfca;background:#fff;border-radius:22px;padding:1rem;min-height:110px;box-shadow:0 4px 0 #eadfca}
+.tile:active{transform:translateY(3px);box-shadow:0 1px 0 #eadfca}
+.tile .ic{font-size:2.3rem;flex:none}
+.tile .t{font-weight:700;font-size:1.1rem;display:block}
+.tile .s{font-size:.85rem;color:var(--soft);display:block;line-height:1.4}
+.t1{border-color:#c7d7fb;box-shadow:0 4px 0 #c7d7fb}.t2{border-color:#fbd5b5;box-shadow:0 4px 0 #fbd5b5}.t3{border-color:#c9ecd4;box-shadow:0 4px 0 #c9ecd4}.t4{border-color:#dcd2fb;box-shadow:0 4px 0 #dcd2fb}.t5{border-color:#f5e3a1;box-shadow:0 4px 0 #f5e3a1}
+/* buttons */
+.btn{border:3px solid #d6cbb4;background:#fff;border-radius:16px;padding:.55rem 1rem;font-weight:700;min-height:56px}
+.btn.big{display:block;width:100%;margin:1rem 0;background:var(--acc);color:#fff;border-color:var(--acc);font-size:1.1rem}
+.btn.sm{min-width:64px;font-size:1.4rem;padding:0 .6rem}
+.btn.on{background:var(--accbg);border-color:var(--acc);color:var(--acc)}
+.row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin:.5rem 0}
+/* figures */
+.figwrap{background:#fff;border-radius:16px;border:2px solid #efe7d6;margin:.6rem 0;padding:.3rem;display:flex;justify-content:center}
+svg.fig{width:100%;max-height:46vh;height:auto;display:block;user-select:none;-webkit-user-select:none}
+svg.drag{touch-action:none}
+.ctrl{display:flex;align-items:center;gap:.6rem;margin:.4rem 0}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:14px;border-radius:10px;background:#e9e1cf;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:42px;height:42px;border-radius:50%;background:var(--acc);border:4px solid #fff;box-shadow:0 1px 4px #0004}
+input[type=range]::-moz-range-thumb{width:38px;height:38px;border-radius:50%;background:var(--acc);border:4px solid #fff}
+.eq{font-size:1.25rem;text-align:center;font-weight:700;margin:.3rem 0;line-height:1.5}
+.tip{font-size:.85rem;color:var(--soft);text-align:center;margin:.2rem 0}
+.badge{display:inline-block;border-radius:10px;padding:.05em .5em;font-weight:700}
+.bb{background:var(--c1bg);color:var(--c1)}.bo{background:var(--c2bg);color:var(--c2)}
+.msg{border-radius:14px;padding:.5rem .8rem;margin:.5rem 0;font-weight:600;text-align:center}
+.msg.ok{background:var(--okbg);color:var(--ok)}.msg.ko{background:var(--kobg);color:var(--ko)}
+/* stepper */
+.progress{height:14px;background:#eee4cf;border-radius:10px;overflow:hidden;margin:.2rem 0 .6rem}
+.progress>div{height:100%;background:var(--acc);border-radius:10px;transition:width .3s}
+.nav{display:flex;gap:.6rem;margin-top:1rem}
+.nav .btn{flex:1}
+.nav .btn.go{background:var(--acc);border-color:var(--acc);color:#fff}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem}
+.tabs .btn{flex:1 1 40%;font-size:.9rem}
+/* questions */
+.q{background:#fff;border-radius:20px;border:2px solid #efe7d6;padding:.8rem 1rem;margin:.7rem 0}
+.prompt{font-size:1.05rem;display:flex;gap:.2rem;align-items:flex-start}
+.prompt>div{flex:1}
+.opts{display:grid;gap:.6rem;margin:.7rem 0}
+.opt{text-align:left;border:3px solid #d9cfb8;background:#fffdf8;border-radius:16px;padding:.7rem 1rem;min-height:60px;line-height:1.5}
+.opt.good{background:var(--okbg);border-color:#22c55e}
+.opt.bad{background:#f3f0ea;border-color:#e2dccf;color:#9a948a;text-decoration:line-through}
+.opt:disabled{cursor:default}
+.fb{border-radius:14px;padding:0;margin:.4rem 0;line-height:1.6}
+.fb.ok{background:var(--okbg);color:var(--ok);padding:.6rem .9rem}
+.fb.ko{background:var(--kobg);color:var(--ko);padding:.6rem .9rem}
+.kp-display{display:flex;justify-content:center;align-items:baseline;gap:.2rem;font-size:2.2rem;font-weight:700;margin:.4rem 0}
+.kp-display .val{min-width:3.2ch;text-align:center;border-bottom:4px solid var(--acc);color:var(--acc)}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;max-width:380px;margin:0 auto}
+.kp button{min-height:64px;border-radius:16px;border:3px solid #d9cfb8;background:#fff;font-size:1.5rem;font-weight:700}
+.kp button.okk{background:var(--acc);border-color:var(--acc);color:#fff;font-size:1.1rem}
+.hintbtn{display:block;margin:.6rem auto 0;border:2px dashed #e0b84a;background:#fffbea;border-radius:14px;padding:.4rem 1rem;min-height:48px;font-weight:600}
+.dots{display:flex;gap:.4rem;justify-content:center;margin:.3rem 0}
+.dot{width:22px;height:22px;border-radius:50%;background:#e8dfcc;border:3px solid #e8dfcc}
+.dot.cur{border-color:var(--acc);background:#fff}.dot.okd{background:#22c55e;border-color:#22c55e}.dot.tried{background:#facc15;border-color:#facc15}
+.result{text-align:center}.result .stars{font-size:2.4rem;letter-spacing:.1em}
+.cap{text-align:center;font-weight:600;margin:.2rem 0}
+/* Données / Propriété / Conclusion */
+.dpc{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.4rem;align-items:stretch;margin:.7rem 0}
+.dpc .col{border-radius:14px;padding:.5rem .7rem;font-size:.92rem;line-height:1.55;border:3px solid}
+.dpc h4{margin:0 0 .3rem;font-size:.9rem}
+.c-d{border-color:#93b4f5;background:#eef4ff}.c-p{border-color:#c4b5fd;background:#f5f3ff}.c-c{border-color:#86d9a3;background:#effcf3}
+.dpc .arrow{display:flex;align-items:center;font-size:1.5rem;color:var(--soft)}
+@media (max-width:640px){.dpc{grid-template-columns:1fr}.dpc .arrow{justify-content:center;transform:rotate(90deg);height:1.6rem}}
+.memo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.8rem}
+.memo .card{margin:0}
+.memo .card h3{margin:.1rem 0 .3rem}
+.memo svg.fig{max-height:170px}
+.parent{font-size:.8rem;color:var(--soft);text-align:center;margin-top:1.5rem;line-height:1.5}
+@media print{
+ header,.noprint,.spk,.btn{display:none!important}
+ body{background:#fff;--fs:13px}
+ .screen{display:none!important}#memo{display:block!important}
+ .card{box-shadow:none;break-inside:avoid}
+ main{max-width:none;padding:0}
+}
+</style>
+</head>
+<body>
+<header>
+ <button class="hbtn" id="homeBtn" aria-label="Accueil">🏠</button>
+ <h1 id="ttl">Les angles</h1>
+ <button class="hbtn" id="fsMinus" aria-label="Texte plus petit">A−</button>
+ <button class="hbtn" id="fsPlus" aria-label="Texte plus grand">A+</button>
+ <button class="hbtn" id="spBtn" aria-label="Espacer le texte">↔</button>
+</header>
+<main>
+
+<!-- ACCUEIL -->
+<section class="screen on" id="home">
+ <div class="hero">
+  <div class="big">📐</div>
+  <h2>Angles et parallélisme</h2>
+  <p class="say" style="color:var(--soft)">Choisis ce que tu veux faire. Tu peux appuyer sur 🔊 pour écouter.</p>
+ </div>
+ <div class="tiles">
+  <button class="tile t1" data-go="cours"><span class="ic">📖</span><span><span class="t">1. Je comprends</span><span class="s">Le cours, étape par étape</span></span></button>
+  <button class="tile t2" data-go="labo"><span class="ic">🖐️</span><span><span class="t">2. Je manipule</span><span class="s">Je bouge les figures avec le doigt</span></span></button>
+  <button class="tile t3" data-go="exos"><span class="ic">✏️</span><span><span class="t">3. Je m'exerce</span><span class="s">4 types d'exercices, avec des indices</span></span></button>
+  <button class="tile t4" data-go="defi"><span class="ic">🏆</span><span><span class="t">4. Je m'entraîne</span><span class="s">Le grand défi : 10 questions mélangées</span></span></button>
+  <button class="tile t5" data-go="memo"><span class="ic">🗂️</span><span><span class="t">Ma fiche mémo</span><span class="s">Tout le cours sur une page</span></span></button>
+ </div>
+ <p class="parent">Conseils : 🔊 lit le texte à voix haute · A− / A+ change la taille · ↔ espace les lettres.<br>Les couleurs sont toujours les mêmes : <span class="cb">bleu</span> = 1er angle, <span class="co">orange</span> = 2e angle, <span style="color:var(--par);font-weight:700">rouge</span> = droites parallèles.</p>
+</section>
+
+<!-- COURS -->
+<section class="screen" id="cours">
+ <div class="progress"><div id="cprog"></div></div>
+ <div id="cbody"></div>
+ <div class="nav"><button class="btn" id="cprev">◀ Retour</button><button class="btn go" id="cnext">Suivant ▶</button></div>
+</section>
+
+<!-- LABO -->
+<section class="screen" id="labo">
+ <h2>🖐️ Je manipule</h2>
+ <p class="say">Choisis une figure. Fais glisser le point violet avec ton doigt. Regarde ce qui change.</p>
+ <div class="tabs" id="labTabs">
+  <button class="btn on" data-t="x">✂️ Le X</button>
+  <button class="btn" data-t="c90">📐 90°</button>
+  <button class="btn" data-t="c180">➖ 180°</button>
+  <button class="btn" data-t="par">🛤️ Parallèles</button>
+ </div>
+ <div id="labBody"></div>
+</section>
+
+<!-- EXERCICES -->
+<section class="screen" id="exos">
+ <div id="exMenu">
+  <h2>✏️ Je m'exerce</h2>
+  <p class="say">Choisis un exercice. Il y a 5 questions. Si tu te trompes, tu peux réessayer.</p>
+  <div class="tiles">
+   <button class="tile t1" data-ex="recog"><span class="ic">👀</span><span><span class="t">Je reconnais</span><span class="s">Adjacents ou opposés ?</span><span class="s best" data-k="recog"></span></span></button>
+   <button class="tile t2" data-ex="comp"><span class="ic">🧮</span><span><span class="t">Je calcule</span><span class="s">Complémentaires (90°) et supplémentaires (180°)</span><span class="s best" data-k="comp"></span></span></button>
+   <button class="tile t3" data-ex="par"><span class="ic">🛤️</span><span><span class="t">Parallèles</span><span class="s">Je trouve le nom, puis la mesure</span><span class="s best" data-k="par"></span></span></button>
+   <button class="tile t4" data-ex="redac"><span class="ic">📝</span><span><span class="t">Je rédige</span><span class="s">On sait que → Propriété → Conclusion</span><span class="s best" data-k="redac"></span></span></button>
+  </div>
+ </div>
+ <div id="exRun"></div>
+</section>
+
+<!-- DEFI -->
+<section class="screen" id="defi"><div id="defiRun"></div></section>
+
+<!-- MEMO -->
+<section class="screen" id="memo">
+ <div class="row" style="justify-content:space-between"><h2 style="margin:0">🗂️ Ma fiche mémo – Angles et parallélisme (5e)</h2><button class="btn" onclick="window.print()">🖨️ Imprimer</button></div>
+ <div class="memo" id="memoBody"></div>
+</section>
+
+</main>
+<script>
+/* ================== OUTILS ================== */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const NS='http://www.w3.org/2000/svg';
+const COL={c1:'#2563eb',c2:'#ea580c',par:'#dc2626',sec:'#334155',com:'#16a34a',acc:'#7c3aed',hl:'#facc15'};
+function S(tag,attrs={},parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function H(html){const t=document.createElement('template');t.innerHTML=html.trim();return t.content.firstElementChild;}
+const rnd=v=>Math.round(v*10)/10;
+const rint=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function P(cx,cy,r,d){const a=d*Math.PI/180;return [rnd(cx+r*Math.cos(a)),rnd(cy-r*Math.sin(a))];}
+const norm=d=>((d%360)+360)%360;
+const span=(a1,a2)=>norm(a2-a1);
+const ang=s=>`<span class="ang">${s[0]}<b>${s[1]}</b>${s[2]}</span>`;
+const store={get(k,d){try{const v=localStorage.getItem('angles_'+k);return v===null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem('angles_'+k,JSON.stringify(v));}catch(e){}}};
+
+function newSvg(w=400,h=300,drag=false){return S('svg',{viewBox:`0 0 ${w} ${h}`,class:'fig'+(drag?' drag':''),role:'img'});}
+function seg(svg,p,q,color=COL.sec,w=4,extra={}){return S('line',Object.assign({x1:p[0],y1:p[1],x2:q[0],y2:q[1],stroke:color,'stroke-width':w,'stroke-linecap':'round'},extra),svg);}
+function ray(svg,cx,cy,d,len,color=COL.sec,w=4){return seg(svg,[cx,cy],P(cx,cy,len,d),color,w);}
+function lineThrough(svg,cx,cy,d,len,color=COL.sec,w=4){return seg(svg,P(cx,cy,len,d+180),P(cx,cy,len,d),color,w);}
+function sector(svg,cx,cy,r,a1,a2,color,op=.33){
+ const g=S('g',{},svg);const d=span(a1,a2);
+ if(Math.abs(d-90)<.6){const s=r*.5,p1=P(cx,cy,s,a1),p2=P(cx,cy,s*Math.SQRT2,a1+45),p3=P(cx,cy,s,a1+90);
+  S('path',{d:`M${cx},${cy} L${p1} L${p2} L${p3} Z`,fill:color,'fill-opacity':op,stroke:color,'stroke-width':3},g);return g;}
+ const p1=P(cx,cy,r,a1),p2=P(cx,cy,r,a1+d),L=d>180?1:0;
+ S('path',{d:`M${cx},${cy} L${p1} A${r},${r} 0 ${L} 0 ${p2} Z`,fill:color,'fill-opacity':op},g);
+ S('path',{d:`M${p1} A${r},${r} 0 ${L} 0 ${p2}`,fill:'none',stroke:color,'stroke-width':3.5},g);
+ return g;}
+function txt(svg,x,y,s,color='#1f2937',size=20,weight=700){const t=S('text',{x,y,fill:color,'font-size':size,'font-weight':weight,'text-anchor':'middle','dominant-baseline':'central','font-family':'Lexend,Verdana,sans-serif',stroke:'#fff','stroke-width':5,'paint-order':'stroke','stroke-linejoin':'round'},svg);t.textContent=s;return t;}
+function midLabel(svg,cx,cy,r,a1,a2,s,color,size=19){const m=P(cx,cy,r,a1+span(a1,a2)/2);return txt(svg,m[0],m[1],s,color,size);}
+function ptMark(svg,x,y,name,dx=0,dy=-18,color='#1f2937'){S('circle',{cx:x,cy:y,r:4,fill:color},svg);if(name)txt(svg,x+dx,y+dy,name,color,19);}
+function handle(svg,p){S('circle',{cx:p[0],cy:p[1],r:17,fill:COL.acc,'fill-opacity':.9,stroke:'#fff','stroke-width':4},svg);}
+function dragAngle(svg,cx,cy,cb){
+ let on=false;const pt=svg.createSVGPoint();
+ const a=e=>{pt.x=e.clientX;pt.y=e.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());return norm(Math.atan2(-(p.y-cy),p.x-cx)*180/Math.PI);};
+ svg.addEventListener('pointerdown',e=>{on=true;try{svg.setPointerCapture(e.pointerId);}catch(_){}cb(a(e));e.preventDefault();});
+ svg.addEventListener('pointermove',e=>{if(on){cb(a(e));e.preventDefault();}});
+ ['pointerup','pointercancel','lostpointercapture'].forEach(t=>svg.addEventListener(t,()=>on=false));}
+function control(box,min,max,val,onChange){
+ const c=H(`<div class="ctrl"><button class="btn sm" aria-label="moins">−</button><input type="range" min="${min}" max="${max}" step="1" value="${val}" aria-label="réglage"><button class="btn sm" aria-label="plus">+</button></div>`);
+ const r=c.querySelector('input');const [m,p]=c.querySelectorAll('button');
+ r.oninput=()=>onChange(+r.value);m.onclick=()=>{r.value=Math.max(min,+r.value-5);onChange(+r.value);};p.onclick=()=>{r.value=Math.min(max,+r.value+5);onChange(+r.value);};
+ box.appendChild(c);return v=>{r.value=v;};}
+
+/* ================== LECTURE À VOIX HAUTE ================== */
+let frVoice=null;
+function loadVoice(){try{const vs=speechSynthesis.getVoices();frVoice=vs.find(v=>/fr[-_]FR/i.test(v.lang))||vs.find(v=>/^fr/i.test(v.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){loadVoice();speechSynthesis.onvoiceschanged=loadVoice;}
+function textOf(node){
+ const c=node.cloneNode(true);$$('.spk,.noread',c).forEach(x=>x.remove());
+ $$('.ang',c).forEach(a=>a.replaceWith(" l'angle "+a.textContent.split('').join(' ')+' '));
+ return c.textContent.replace(/\(d[′']\)/g,' d prime ').replace(/\(d\)/g,' d ').replace(/\/\//g,' est parallèle à ')
+  .replace(/°/g,' degrés').replace(/−/g,' moins ').replace(/\s\+\s/g,' plus ').replace(/=/g,' égale ').replace(/×/g,' fois ')
+  .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{2190}-\u{21FF}➜▶◀]/gu,' ').replace(/\s+/g,' ').trim();}
+function speak(t){try{if(!('speechSynthesis' in window)){return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=.85;if(frVoice)u.voice=frVoice;speechSynthesis.speak(u);}catch(e){}}
+function addSpeak(root){$$('.say',root).forEach(el=>{if(el.querySelector(':scope > .spk'))return;const b=H('<button class="spk" aria-label="Écouter">🔊</button>');b.onclick=e=>{e.stopPropagation();speak(textOf(el));};el.insertBefore(b,el.firstChild);});}
+
+/* ================== FIGURES STATIQUES ================== */
+function figBasic(v=55){ // un angle BAC
+ const s=newSvg();const A=[80,230];sector(s,...A,60,0,v,COL.c1);ray(s,...A,0,280);ray(s,...A,v,230);
+ const C=P(...A,280,0),B=P(...A,230,v);ptMark(s,...A,'A',-14,18,COL.par);ptMark(s,...C,'C',0,-18);ptMark(s,...B,'B',14,-10);
+ return s;}
+function figAdj(counter=false,hl={}){
+ const s=newSvg();const A=[70,165];
+ const dB=40,dC=5,dD=counter?22:-40;
+ if(counter){sector(s,...A,95,dC,dB,COL.c1,.28);sector(s,...A,55,dC,dD,COL.c2,.45);}
+ else{sector(s,...A,70,dC,dB,COL.c1,hl.s3?.5:.3);sector(s,...A,70,dD,dC,COL.c2,hl.s3?.5:.3);}
+ ray(s,...A,dB,270);ray(s,...A,dD,270);ray(s,...A,dC,300,(hl.s2||counter)?COL.com:COL.sec,(hl.s2||counter)?8:4);
+ if(hl.s1)S('circle',{cx:A[0],cy:A[1],r:22,fill:COL.hl,'fill-opacity':.6},s);
+ ptMark(s,...A,'A',-16,10,COL.par);ptMark(s,...P(...A,270,dB),'B',10,-14);ptMark(s,...P(...A,300,dC),'C',0,-18);ptMark(s,...P(...A,270,dD),'D',12,14);
+ if(hl.s2&&!counter)txt(s,300,190,'côté commun',COL.com,16);
+ return s;}
+function figX(alpha,beta,pair,labels=true,names=false){
+ const s=newSvg();const O=[200,150];
+ const a1=pair===0?alpha:beta, a2=pair===0?beta:alpha+180;
+ sector(s,...O,55,a1,a2,COL.c1,.35);sector(s,...O,55,a1+180,a2+180,COL.c2,.35);
+ lineThrough(s,...O,alpha,180);lineThrough(s,...O,beta,180);
+ const m=Math.round(span(a1,a2));
+ if(labels){midLabel(s,...O,82,a1,a2,m+'°',COL.c1);midLabel(s,...O,82,a1+180,a2+180,m+'°',COL.c2);}
+ ptMark(s,...O,names?'O':'',0,0);
+ return {svg:s,m};}
+function splitFig(tot,a,showB=true,drag=false){
+ const s=newSvg(400,300,drag);const O=tot===90?[110,255]:[200,235];const L=tot===90?205:175;
+ sector(s,...O,70,0,a,COL.c1,.35);sector(s,...O,70,a,tot,COL.c2,.35);
+ if(tot===90){const k=16;S('path',{d:`M${O[0]+k},${O[1]} L${O[0]+k},${O[1]-k} L${O[0]},${O[1]-k}`,fill:'none',stroke:'#1f2937','stroke-width':2.5},s);}
+ ray(s,...O,0,L);ray(s,...O,tot,L);ray(s,...O,a,L,COL.acc,5);
+ midLabel(s,...O,105,0,a,a+'°',COL.c1,20);midLabel(s,...O,105,a,tot,showB?(tot-a)+'°':'?',COL.c2,20);
+ ptMark(s,...O,'',0,0);
+ return {svg:s,O,L};}
+/* Parallèles + sécante */
+function parGeom(th,phi=0){const k=55/Math.tan(th*Math.PI/180);return{M:[200,150],A:[rnd(200+k),95],B:[rnd(200-k),205],th,phi};}
+const quads=(L,th)=>[[L,th],[th,L+180],[L+180,th+180],[th+180,L+360]];
+const nonsec=(q,L)=>(q===0||q===3)?L:L+180;
+function parBase(s,g,names=false){
+ lineThrough(s,...g.A,0,400,COL.par,4);lineThrough(s,...g.B,g.phi,400,COL.par,4);
+ lineThrough(s,...g.M,g.th,160,COL.sec,4);
+ txt(s,372,72,'(d)',COL.par,18);const dl=P(...g.B,190,g.phi);txt(s,Math.min(372,dl[0]),dl[1]-22,'(d′)',COL.par,18);
+ if(names){const A=g.A,B=g.B;
+  ptMark(s,...A,'A',16,-18);ptMark(s,...B,'B',-16,18);
+  ptMark(s,...P(...A,120,180),'E',0,-18);ptMark(s,...P(...A,95,0),'C',0,-18);
+  ptMark(s,...P(...B,95,180+g.phi),'D',0,18);ptMark(s,...P(...B,120,g.phi),'F',0,18);
+  ptMark(s,...P(...A,58,g.th),'G',16,0);ptMark(s,...P(...B,58,g.th+180),'H',-16,0);}
+}
+function parAngle(s,g,pt,q,color,label,r=34){const p=pt==='A'?g.A:g.B,L=pt==='A'?0:g.phi;const [a1,a2]=quads(L,g.th)[q];sector(s,...p,r,a1,a2,color,.4);if(label!==undefined)midLabel(s,...p,r+24,a1,a2,label,color,18);return Math.round(span(a1,a2));}
+function parHighlight(s,g,mode,qa,qb){
+ const st={stroke:COL.hl,'stroke-opacity':.75,w:14};
+ const Ae=P(...g.A,95,nonsec(qa,0)),Be=P(...g.B,95,nonsec(qb,g.phi));
+ if(mode==='alt'){S('polyline',{points:[Ae,g.A,g.B,Be].map(p=>p.join(',')).join(' '),fill:'none',stroke:COL.hl,'stroke-opacity':.75,'stroke-width':14,'stroke-linejoin':'round','stroke-linecap':'round'},s);}
+ else{seg(s,Ae,g.A,COL.hl,14,{'stroke-opacity':.75});seg(s,Be,g.B,COL.hl,14,{'stroke-opacity':.75});
+  if(qa<=1)seg(s,g.B,P(...g.A,55,g.th),COL.hl,14,{'stroke-opacity':.75});else seg(s,g.A,P(...g.B,55,g.th+180),COL.hl,14,{'stroke-opacity':.75});}
+}
+function parFig(th,ka,kb,la,lb,opts={}){
+ const s=newSvg();const g=parGeom(th);
+ if(opts.hl)parHighlight(s,g,opts.hl,ka[1],kb[1]);
+ parBase(s,g,opts.names);
+ parAngle(s,g,ka[0],ka[1],COL.c1,la);parAngle(s,g,kb[0],kb[1],COL.c2,lb);
+ return s;}
+function wrapFig(svg){const f=H('<div class="figwrap"></div>');f.appendChild(svg);return f;}
+
+/* ================== WIDGETS INTERACTIFS ================== */
+function mountOpen(c){
+ let v=55;const fw=H('<div class="figwrap"></div>');const eq=H('<div class="eq"></div>');c.append(fw,eq);
+ function draw(){fw.innerHTML='';const s=figBasic(v);s.classList.add('drag');const A=[80,230];
+  handle(s,P(...A,200,v));midLabel(s,...A,88,0,v,v+'°',COL.c1,20);fw.appendChild(s);
+  dragAngle(s,...A,a=>{if(a>270)a=5;v=Math.max(5,Math.min(180,Math.round(a)));set(v);draw();});
+  const type=v<90?'aigu (plus petit que l’angle droit)':v===90?'droit (comme le coin d’une feuille)':v<180?'obtus (plus grand que l’angle droit)':'plat (une ligne droite)';
+  eq.innerHTML=`${ang('BAC')} = <span class="badge bb">${v}°</span><br><span style="font-size:.9rem">→ angle ${type}</span>`;}
+ const set=control(c,5,180,v,x=>{v=x;draw();});
+ c.appendChild(H('<p class="tip">👆 Fais glisser le point violet pour ouvrir ou fermer l’angle.</p>'));draw();}
+function mountAdj(c){
+ const st={s1:false,s2:false,s3:false,counter:false};
+ const fw=H('<div class="figwrap"></div>');c.appendChild(fw);
+ const row=H(`<div class="row"><button class="btn" data-k="s1">① même sommet</button><button class="btn" data-k="s2">② côté commun</button><button class="btn" data-k="s3">③ chacun de son côté</button></div>`);
+ const row2=H(`<div class="row"><button class="btn" data-k="counter">🔁 Voir un contre-exemple</button></div>`);
+ const msg=H('<div class="msg ok"></div>');c.append(row,row2,msg);
+ function draw(){fw.innerHTML='';fw.appendChild(figAdj(st.counter,st));
+  $$('button',row).forEach(b=>b.classList.toggle('on',st[b.dataset.k]));row2.firstElementChild.classList.toggle('on',st.counter);
+  if(st.counter){msg.className='msg ko';msg.innerHTML=`❌ ${ang('BAC')} et ${ang('CAD')} se chevauchent : l’orange est DANS le bleu. Ils ne sont <b>pas</b> adjacents.`;}
+  else{const n=['s1','s2','s3'].filter(k=>st[k]).length;msg.className='msg ok';msg.innerHTML=n===3?`✅ Les 3 conditions sont vraies : ${ang('BAC')} et ${ang('CAD')} sont <b>adjacents</b> !`:`Appuie sur ①, ② et ③ pour vérifier les 3 conditions (${n}/3).`;}}
+ $$('button',row).forEach(b=>b.onclick=()=>{st[b.dataset.k]=!st[b.dataset.k];if(st.counter)st.counter=false;draw();});
+ row2.firstElementChild.onclick=()=>{st.counter=!st.counter;draw();};draw();}
+function mountX(c){
+ const alpha=15;let beta=75,pair=0;const fw=H('<div class="figwrap"></div>'),eq=H('<div class="eq"></div>');
+ const tg=H('<div class="row" style="justify-content:center"><button class="btn">🔁 Voir l’autre paire d’angles</button></div>');c.append(fw,eq);
+ function draw(){fw.innerHTML='';const {svg,m}=figX(alpha,beta,pair);svg.classList.add('drag');handle(svg,P(200,150,150,beta));fw.appendChild(svg);
+  dragAngle(svg,200,150,a=>{if(a>180)a-=180;beta=Math.max(alpha+15,Math.min(alpha+150,Math.round(a)));set(beta-alpha);draw();});
+  eq.innerHTML=`<span class="badge bb">${m}°</span> et <span class="badge bo">${m}°</span><br><span style="font-size:.95rem">✅ Face à face → même mesure !</span>`;}
+ const set=control(c,15,150,beta-alpha,x=>{beta=alpha+x;draw();});
+ c.append(tg,H('<p class="tip">👆 Fais tourner une droite avec le point violet : les deux angles restent toujours égaux.</p>'));
+ tg.firstElementChild.onclick=()=>{pair=1-pair;draw();};draw();}
+function mountSplit(c,tot){
+ let a=tot===90?40:110;const fw=H('<div class="figwrap"></div>'),eq=H('<div class="eq"></div>');c.append(fw,eq);
+ const word=tot===90?'complémentaires':'supplémentaires';
+ function draw(){fw.innerHTML='';const {svg,O,L}=splitFig(tot,a,true,true);handle(svg,P(...O,L-10,a));fw.appendChild(svg);
+  dragAngle(svg,...O,x=>{if(x>270)x=0;a=Math.max(5,Math.min(tot-5,Math.round(x)));set(a);draw();});
+  eq.innerHTML=`<span class="badge bb">${a}°</span> + <span class="badge bo">${tot-a}°</span> = <b>${tot}°</b><br><span style="font-size:.95rem">→ toujours ${tot}° : ils sont <b>${word}</b></span>`;}
+ const set=control(c,5,tot-5,a,x=>{a=x;draw();});
+ c.appendChild(H('<p class="tip">👆 Déplace la demi-droite violette : le total ne change jamais.</p>'));draw();}
+function mountPar(c,withNonPar=true){
+ const st={th:55,mode:'alt',k:0,np:false};
+ const pairs={alt:[[2,0],[3,1]],corr:[[0,0],[1,1],[2,2],[3,3]]};
+ const modes=H(`<div class="row"><button class="btn" data-m="alt">Z · Alternes-internes</button><button class="btn" data-m="corr">F · Correspondants</button></div>`);
+ const fw=H('<div class="figwrap"></div>'),eq=H('<div class="eq"></div>');
+ const row=H(`<div class="row"><button class="btn" id="otherPair">🔁 Autre paire</button>${withNonPar?'<button class="btn" id="npBtn">⚠️ Droites pas parallèles</button>':''}</div>`);
+ c.append(modes,fw,eq);
+ function draw(){fw.innerHTML='';const s=newSvg(400,300,true);const g=parGeom(st.th,st.np?12:0);const [qa,qb]=pairs[st.mode][st.k%pairs[st.mode].length];
+  parHighlight(s,g,st.mode,qa,qb);parBase(s,g);
+  const ma=parAngle(s,g,'A',qa,COL.c1,'');const mb=parAngle(s,g,'B',qb,COL.c2,'');
+  const pa=quads(0,g.th)[qa],pb=quads(g.phi,g.th)[qb];midLabel(s,...g.A,58,pa[0],pa[1],ma+'°',COL.c1,18);midLabel(s,...g.B,58,pb[0],pb[1],mb+'°',COL.c2,18);
+  handle(s,P(...g.M,150,g.th));{const lp=P(...g.M,112,g.th);txt(s,lp[0]+(g.th<=90?50:-50),lp[1],'sécante',COL.sec,15);}
+  fw.appendChild(s);
+  dragAngle(s,...g.M,a=>{if(a>180)a-=180;st.th=Math.max(30,Math.min(150,Math.round(a)));set(st.th);draw();});
+  $$('button',modes).forEach(b=>b.classList.toggle('on',b.dataset.m===st.mode));
+  const nb=$('#npBtn',row);if(nb)nb.classList.toggle('on',st.np);
+  const name=st.mode==='alt'?'alternes-internes (forme de Z)':'correspondants (forme de F)';
+  eq.innerHTML=`<span class="badge bb">${ma}°</span> et <span class="badge bo">${mb}°</span><br><span style="font-size:.95rem">Angles ${name}</span>`+
+   (st.np?`<div class="msg ko">❌ Pas la même mesure ! Les droites ne sont <b>pas parallèles</b>, donc la propriété ne marche pas.</div>`:`<div class="msg ok">✅ Droites parallèles → même mesure</div>`);}
+ const set=control(c,30,150,st.th,x=>{st.th=x;draw();});
+ c.append(row,H('<p class="tip">👆 Fais tourner la sécante avec le point violet.</p>'));
+ $$('button',modes).forEach(b=>b.onclick=()=>{st.mode=b.dataset.m;st.k=0;draw();});
+ $('#otherPair',row).onclick=()=>{st.k++;draw();};
+ const nb=$('#npBtn',row);if(nb)nb.onclick=()=>{st.np=!st.np;draw();};draw();}
+
+/* ================== QUESTIONS ================== */
+function mcq(area,{prompt,options,explain='',hint='Essaie une autre réponse.',onDone}){
+ const opts=shuffle(options.slice());
+ const box=H(`<div class="q"><div class="prompt"><button class="spk" aria-label="Écouter">🔊</button><div>${prompt}</div></div><div class="opts"></div><div class="fb" aria-live="polite"></div></div>`);
+ area.appendChild(box);let first=true,done=false;const oc=$('.opts',box),fb=$('.fb',box);
+ opts.forEach(o=>{const b=H(`<button class="opt">${o.t}</button>`);oc.appendChild(b);
+  b.onclick=()=>{if(done)return;
+   if(o.ok){done=true;b.classList.add('good');$$('.opt',oc).forEach(x=>x.disabled=true);fb.className='fb ok';fb.innerHTML=`✅ <b>${first?pick(['Bravo !','Super !','Exact !','Parfait !']):'Oui, c’est ça !'}</b> ${explain}`;onDone&&onDone(first);}
+   else{first=false;b.classList.add('bad');b.disabled=true;fb.className='fb ko';fb.innerHTML=`🤔 <b>Pas encore.</b> ${hint}`;}};});
+ $('.spk',box).onclick=()=>{const p=textOf($('.prompt>div',box));const os=$$('.opt:not(.bad)',oc).map((b,i)=>'Réponse '+(i+1)+' : '+textOf(b)).join('. ');speak(p+'. '+os);};
+ return box;}
+function keypad(area,{prompt,answer,hint,explain='',onDone}){
+ const box=H(`<div class="q"><div class="prompt"><button class="spk" aria-label="Écouter">🔊</button><div>${prompt}</div></div>
+  <div class="kp-display"><span class="val">?</span><span>°</span></div><div class="kp"></div><button class="hintbtn">💡 Un indice</button><div class="fb" aria-live="polite"></div></div>`);
+ area.appendChild(box);let v='',first=true,done=false;const val=$('.val',box),fb=$('.fb',box),kp=$('.kp',box);
+ const show=()=>val.textContent=v===''?'?':v;
+ ['1','2','3','4','5','6','7','8','9','⌫','0','OK'].forEach(k=>{const b=H(`<button ${k==='OK'?'class="okk"':''}>${k==='OK'?'Valider':k}</button>`);kp.appendChild(b);
+  b.onclick=()=>{if(done)return;if(k==='⌫')v=v.slice(0,-1);else if(k==='OK'){if(v==='')return;
+    if(+v===answer){done=true;fb.className='fb ok';fb.innerHTML=`✅ <b>${first?pick(['Bravo !','Super !','Exact !']):'Oui, c’est ça !'}</b> ${explain}`;$('.hintbtn',box).remove();onDone&&onDone(first);}
+    else{first=false;fb.className='fb ko';fb.innerHTML=`🤔 <b>Ce n’est pas ${v}°.</b> ${hint}`;v='';}}
+   else if(v.length<3)v+=k;show();};});
+ $('.hintbtn',box).onclick=()=>{fb.className='fb ko';fb.innerHTML='💡 '+hint;};
+ $('.spk',box).onclick=()=>speak(textOf($('.prompt>div',box)));
+ return box;}
+
+/* ================== GÉNÉRATEURS D'EXERCICES ================== */
+function figRecog(t){
+ const s=newSvg();
+ if(t==='opp'||t==='adjX'){const O=[200,150],al=rint(0,60),be=al+rint(45,120);const q=rint(0,1);
+  const a1=q?be:al,a2=q?al+180:be;sector(s,...O,60,a1,a2,COL.c1,.38);
+  if(t==='opp')sector(s,...O,60,a1+180,a2+180,COL.c2,.38);else sector(s,...O,60,a2,a1+180,COL.c2,.38);
+  lineThrough(s,...O,al,180);lineThrough(s,...O,be,180);ptMark(s,...O,'',0,0);}
+ else if(t==='adj'||t==='over'){const O=[200,200],r1=rint(-10,40),r2=r1+rint(40,65),r3=r2+rint(40,65);
+  if(t==='adj'){sector(s,...O,65,r1,r2,COL.c1,.38);sector(s,...O,65,r2,r3,COL.c2,.38);ray(s,...O,r1,170);ray(s,...O,r3,170);ray(s,...O,r2,180,COL.com,7);}
+  else{sector(s,...O,90,r1,r3,COL.c1,.28);sector(s,...O,55,r1,r2,COL.c2,.45);ray(s,...O,r2,170);ray(s,...O,r3,170);ray(s,...O,r1,180,COL.com,7);}
+  ptMark(s,...O,'',0,0);}
+ else{const O1=[90,220],O2=[255,160],a=rint(20,50),b=rint(35,70),c=rint(110,160);
+  sector(s,...O1,55,a,a+b,COL.c1,.38);ray(s,...O1,a,130);ray(s,...O1,a+b,130);
+  const w=rint(35,60);sector(s,...O2,45,c,c+w,COL.c2,.38);ray(s,...O2,c,120);ray(s,...O2,c+w,120);
+  ptMark(s,...O1,'',0,0);ptMark(s,...O2,'',0,0);}
+ return s;}
+function genRecog(){
+ const t=pick(['opp','opp','adj','adjX','over','two']);
+ return (area,done)=>{area.appendChild(wrapFig(figRecog(t)));
+  const A='Adjacents',O='Opposés par le sommet',N='Ni l’un ni l’autre';
+  const ans=t==='opp'?O:(t==='adj'||t==='adjX')?A:N;
+  const exp={opp:'Même sommet, et les côtés de l’un prolongent ceux de l’autre : ils sont face à face, comme un X.',
+   adj:'Même sommet, un côté commun (en vert), et ils sont chacun d’un côté.',
+   adjX:'Ils sont voisins : même sommet, un côté commun, chacun de son côté.',
+   over:'Ils ont un côté commun, mais l’orange est DANS le bleu : ils se chevauchent. Donc pas adjacents.',
+   two:'Ils n’ont pas le même sommet. Donc ni adjacents, ni opposés.'}[t];
+  mcq(area,{prompt:'Regarde l’angle <span class="cb">bleu</span> et l’angle <span class="co">orange</span>. Comment sont-ils ?',
+   options:[A,O,N].map(x=>({t:x,ok:x===ans})),explain:exp,hint:'Vérifie : même sommet ? un côté commun ? face à face comme un X ?',onDone:done});};}
+function genComp(){
+ const tot=pick([90,180]);const a=tot===90?5*rint(2,16):5*rint(3,33);const b=tot-a;const word=tot===90?'complémentaires':'supplémentaires';
+ return (area,done)=>{area.appendChild(wrapFig(splitFig(tot,a,false).svg));
+  keypad(area,{prompt:`Les angles <span class="cb">bleu</span> et <span class="co">orange</span> sont <b>${word}</b>.<br>L’angle bleu mesure <b>${a}°</b>.<br>Combien mesure l’angle orange ?`,
+   answer:b,hint:`${word} → le total fait ${tot}°. Calcule : ${tot} − ${a} = ?`,explain:`${tot} − ${a} = ${b}°. Vérification : ${a} + ${b} = ${tot} ✔️`,onDone:done});};}
+function genPar(){
+ const th=rint(35,75);const rel=pick(['alt','corr','opp']);let ka,kb;
+ if(rel==='alt'){[ka,kb]=pick([[['A',2],['B',0]],[['A',3],['B',1]]]);}
+ else if(rel==='corr'){const q=rint(0,3);ka=['A',q];kb=['B',q];}
+ else{const p=pick(['A','B']),q=rint(0,3);ka=[p,q];kb=[p,(q+2)%4];}
+ if(Math.random()<.5)[ka,kb]=[kb,ka];
+ const val=ka[1]%2===0?th:180-th;
+ const names={alt:'Alternes-internes',corr:'Correspondants',opp:'Opposés par le sommet'};
+ return (area,done)=>{area.appendChild(wrapFig(parFig(th,ka,kb,val+'°','?')));
+  area.appendChild(H('<p class="cap">Les droites <span style="color:var(--par)">(d)</span> et <span style="color:var(--par)">(d′)</span> sont parallèles.</p>'));
+  mcq(area,{prompt:'<b>Étape 1</b> : comment s’appellent ces 2 angles ?',options:Object.keys(names).map(k=>({t:names[k],ok:k===rel})),
+   hint:'Z → alternes-internes. F → correspondants. X → opposés par le sommet.',
+   explain:{alt:'De chaque côté de la sécante et entre les 2 droites : forme de Z.',corr:'Même place sur chaque croisement : forme de F.',opp:'Même sommet, face à face : forme de X.'}[rel],
+   onDone:f=>{keypad(area,{prompt:`<b>Étape 2</b> : l’angle bleu mesure <b>${val}°</b>. Combien mesure l’angle orange ?`,answer:val,hint:'Ces deux angles ont la même mesure !',
+     explain:`${names[rel]}${rel==='opp'?'':' + droites parallèles'} → même mesure : ${val}°.`,onDone:f2=>done(f&&f2)});}});};}
+function genRedac(){
+ const kind=pick(['opp','alt','corr']);
+ let fig,D,Pp,C,ok;
+ if(kind==='opp'){const al=rint(10,35),be=al+rint(50,110),m=be-al;const O=[200,150];
+  const s=newSvg();sector(s,...O,50,al,be,COL.c1,.35);sector(s,...O,50,al+180,be+180,COL.c2,.35);lineThrough(s,...O,al,170);lineThrough(s,...O,be,170);
+  midLabel(s,...O,78,al,be,m+'°',COL.c1);midLabel(s,...O,78,al+180,be+180,'?',COL.c2);
+  ptMark(s,...O,'O',0,24);ptMark(s,...P(...O,150,al),'A',0,-18);ptMark(s,...P(...O,150,be),'B',14,-12);ptMark(s,...P(...O,150,al+180),'C',0,18);ptMark(s,...P(...O,150,be+180),'D',-14,12);
+  fig=s;
+  D=[`Les angles ${ang('AOB')} et ${ang('COD')} sont opposés par le sommet.`,`Les angles ${ang('AOB')} et ${ang('COD')} sont adjacents.`,`Les angles ${ang('AOB')} et ${ang('COD')} sont complémentaires.`];
+  Pp=['Si deux angles sont opposés par le sommet, alors ils ont la même mesure.','Si deux angles sont adjacents, alors ils ont la même mesure.','Si deux angles sont complémentaires, alors ils ont la même mesure.'];
+  C=[`${ang('COD')} = ${ang('AOB')} = ${m}°`,`${ang('COD')} = 180 − ${m} = ${180-m}°`,`${ang('COD')} = 2 × ${m} = ${2*m}°`];}
+ else{const th=rint(40,70);const g=parGeom(th);const s=newSvg();parBase(s,g,true);
+  const ga=kind==='alt'?2:0;parAngle(s,g,'A',ga,COL.c1,th+'°');parAngle(s,g,'B',0,COL.c2,'?');fig=s;
+  const a1=kind==='alt'?'EAB':'GAC',nm=kind==='alt'?'alternes-internes':'correspondants',other=kind==='alt'?'correspondants':'alternes-internes';
+  D=[`(d) // (d′) et les angles ${ang(a1)} et ${ang('ABF')} sont ${nm}.`,`Les angles ${ang(a1)} et ${ang('ABF')} sont opposés par le sommet.`,`(d) // (d′) et les angles ${ang(a1)} et ${ang('ABF')} sont adjacents.`];
+  Pp=[`Si deux droites parallèles sont coupées par une sécante, alors les angles ${nm} ont la même mesure.`,'Si deux angles sont opposés par le sommet, alors ils ont toujours la même mesure.','Si deux droites sont coupées par une sécante, alors ces droites sont toujours parallèles.'];
+  C=[`${ang('ABF')} = ${ang(a1)} = ${th}°`,`${ang('ABF')} = 180 − ${th} = ${180-th}°`,`${ang('ABF')} = 90 − ${th} = ${90-th}°`];}
+ return (area,done)=>{area.appendChild(wrapFig(fig));
+  const table=H('<div class="dpc"><div class="col c-d"><h4>On sait que</h4><div>…</div></div><div class="arrow">➜</div><div class="col c-p"><h4>Propriété</h4><div>…</div></div><div class="arrow">➜</div><div class="col c-c"><h4>On peut conclure</h4><div>…</div></div></div>');
+  area.appendChild(table);const cols=$$('.col>div',table);let allFirst=true;
+  const step=(i)=>{const L=[D,Pp,C][i];const title=['<b>Étape 1 · On sait que…</b> Choisis les données.','<b>Étape 2 · Propriété.</b> Choisis la bonne règle « Si… alors… ».','<b>Étape 3 · Conclusion.</b> Combien mesure l’angle orange ?'][i];
+   const hints=['Regarde la figure : où sont les angles ? (X, Z ou F ?)','La propriété doit parler du même type d’angles que dans les données.','La propriété dit : même mesure !'];
+   const q=mcq(area,{prompt:title,options:L.map((t,k)=>({t,ok:k===0})),hint:hints[i],onDone:f=>{allFirst=allFirst&&f;cols[i].innerHTML=(i===2?'Donc ':'')+L[0];
+     setTimeout(()=>{q.remove();if(i<2)step(i+1);else{area.appendChild(H('<div class="msg ok">✅ Ta rédaction est complète ! Tu peux la recopier dans ton cahier.</div>'));done(allFirst);}},900);}});};
+  step(0);};}
+const DEF=[
+ ['Deux angles <b>complémentaires</b> : leur somme fait…',['90°','180°','360°']],
+ ['Deux angles <b>supplémentaires</b> : leur somme fait…',['180°','90°','100°']],
+ ['Deux angles <b>opposés par le sommet</b>…',['ont la même mesure','font 90° ensemble','font 180° ensemble']],
+ [`Dans l’angle ${ang('RST')}, le sommet est…`,['le point S','le point R','le point T']],
+ ['Les angles <b>alternes-internes</b> ont la forme de la lettre…',['Z','F','X']],
+ ['Les angles <b>correspondants</b> ont la forme de la lettre…',['F','Z','X']],
+ ['Les angles <b>opposés par le sommet</b> ont la forme de la lettre…',['X','Z','F']],
+ ['Une <b>sécante</b>, c’est une droite qui…',['coupe d’autres droites','est toujours horizontale','ne coupe aucune droite']],
+ ['Un angle de 90° est un angle…',['droit','plat','aigu']],
+ ['Un angle de 180° est un angle…',['plat','droit','obtus']],
+ ['Pour utiliser la propriété des angles alternes-internes, les droites doivent être…',['parallèles','perpendiculaires','de même longueur']],
+ ['Deux angles <b>adjacents</b> ont toujours…',['un côté commun','la même mesure','une somme de 90°']]];
+function genDef(){const [p,o]=pick(DEF);return (area,done)=>mcq(area,{prompt:p,options:o.map((t,k)=>({t,ok:k===0})),hint:'Relis la fiche mémo dans ta tête. Tu vas trouver !',onDone:done});}
+const GENS={recog:genRecog,comp:genComp,par:genPar,redac:genRedac};
+const EXTITLE={recog:'👀 Je reconnais',comp:'🧮 Je calcule',par:'🛤️ Parallèles',redac:'📝 Je rédige'};
+
+function runSeries(root,{title,gen,n=5,key,onQuit}){
+ root.innerHTML='';const wrap=H(`<div><h2>${title}</h2><div class="dots"></div><div class="qarea"></div></div>`);root.appendChild(wrap);
+ const dots=$('.dots',wrap),area=$('.qarea',wrap);for(let k=0;k<n;k++)dots.appendChild(H('<span class="dot"></span>'));
+ let i=0,score=0;
+ function next(){area.innerHTML='';if(i>=n)return finish();dots.children[i].classList.add('cur');
+  gen(i)(area,first=>{if(first)score++;dots.children[i].classList.remove('cur');dots.children[i].classList.add(first?'okd':'tried');
+   const nb=H(`<button class="btn big">${i+1<n?'Question suivante ▶':'Voir mon résultat 🏁'}</button>`);nb.onclick=()=>{i++;next();window.scrollTo({top:0,behavior:'smooth'});};
+   area.appendChild(nb);setTimeout(()=>nb.scrollIntoView({behavior:'smooth',block:'center'}),150);});}
+ function finish(){const best=Math.max(store.get('best_'+key,0),score);store.set('best_'+key,best);
+  const ratio=score/n;const stars=ratio>=.9?3:ratio>=.6?2:1;
+  const msg=ratio>=.9?'Incroyable ! Tu maîtrises 💪':ratio>=.6?'Très bien ! Encore un essai pour les 3 étoiles ?':'Tu progresses ! Chaque essai t’aide à retenir. Recommence 🙂';
+  area.innerHTML='';const r=H(`<div class="card result"><div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</div><h2>${score} / ${n} du premier coup</h2><p class="say">${msg}</p>
+   <p style="font-size:.85rem;color:var(--soft)">🟢 = trouvé du 1er coup · 🟡 = trouvé après un essai (c’est bien aussi !)</p>
+   <button class="btn big" id="again">🔁 Recommencer</button><button class="btn" id="quit" style="width:100%">◀ Retour</button></div>`);
+  area.appendChild(r);addSpeak(r);$('#again',r).onclick=()=>runSeries(root,{title,gen,n,key,onQuit});$('#quit',r).onclick=onQuit;}
+ next();}
+
+/* ================== COURS ================== */
+const CARDS=[
+ {t:'1. Un angle, c’est quoi ?',h:`
+  <p class="say">Un <b>angle</b>, c’est l’ouverture entre <b>2 demi-droites</b> qui partent du <b>même point</b>.</p>
+  <p class="say">Ce point s’appelle le <span class="kw">sommet</span>. Les 2 demi-droites sont les <span class="kw">côtés</span>.</p>
+  <div class="w"></div>
+  <div class="astuce say">💡 Pour écrire un angle : <b>3 lettres + un chapeau</b>. Exemple : ${ang('BAC')}.<br>La lettre du <b>milieu</b> (sous la pointe du chapeau) est <b>toujours le sommet</b>.</div>`,
+  m:mountOpen,q:{p:`Dans l’angle ${ang('RST')}, quel est le sommet ?`,o:['S','R','T'],e:'La lettre du milieu est le sommet : S.'}},
+ {t:'2. Les angles adjacents',h:`
+  <div class="def say"><span class="tag noread">Définition</span><br>Deux angles sont <span class="kw">adjacents</span> lorsqu’ils :
+   <ol><li>ont le <b>même sommet</b> ;</li><li>ont un <b>côté commun</b> ;</li><li>sont situés <b>de part et d’autre</b> du côté commun.</li></ol></div>
+  <div class="w"></div>
+  <div class="astuce say">💡 Adjacents = des <b>voisins</b> : ils ont un mur en commun, mais chacun reste chez soi. Ils ne se chevauchent pas.</div>
+  <p class="say"><b>Exemple :</b> ${ang('BAC')} et ${ang('CAD')} sont adjacents.</p>`,
+  m:mountAdj,q:{p:'Deux angles adjacents ont toujours…',o:['le même sommet et un côté commun','la même mesure, comme des jumeaux','une somme égale à 90 degrés'],e:'Même sommet + côté commun + chacun de son côté.'}},
+ {t:'3. Les angles opposés par le sommet',h:`
+  <div class="def say"><span class="tag noread">Définition</span><br>Deux angles sont <span class="kw">opposés par le sommet</span> lorsque :
+   <ul><li>ils ont le <b>même sommet</b> ;</li><li>les côtés de l’un sont le <b>prolongement</b> des côtés de l’autre.</li></ul></div>
+  <div class="w"></div>
+  <div class="def prop say"><span class="tag noread">Propriété ❤️</span><br><b>Si</b> deux angles sont opposés par le sommet, <b>alors</b> ils ont la <b>même mesure</b>.</div>
+  <div class="astuce say">💡 Pense à des <b>ciseaux</b> ✂️ ou à la lettre <b>X</b> : les angles face à face sont pareils.</div>`,
+  m:mountX,q:{p:'Deux angles opposés par le sommet…',o:['ont la même mesure','font 90° ensemble','font 180° ensemble'],e:'Face à face = même mesure.'}},
+ {t:'4. Les angles complémentaires',h:`
+  <div class="def say"><span class="tag noread">Définition</span><br>Deux angles sont <span class="kw">complémentaires</span> lorsque la <b>somme</b> de leurs mesures est égale à <b>90°</b>.</div>
+  <div class="w"></div>
+  <p class="say"><b>Exemple :</b> ${ang('IAM')} + ${ang('MAC')} = 40° + 50° = 90°. Ils sont complémentaires.</p>
+  <div class="astuce say">💡 <b>C</b> comme <b>C</b>oin : 90°, c’est le coin d’une feuille.<br>Pour trouver l’autre angle : <b>90 − l’angle connu</b>.</div>`,
+  m:c=>mountSplit(c,90),q:{p:'Un angle mesure 35°. Son complémentaire mesure…',o:['55°','65°','45°'],e:'90 − 35 = 55.'}},
+ {t:'5. Les angles supplémentaires',h:`
+  <div class="def say"><span class="tag noread">Définition</span><br>Deux angles sont <span class="kw">supplémentaires</span> lorsque la <b>somme</b> de leurs mesures est égale à <b>180°</b>.</div>
+  <div class="w"></div>
+  <p class="say"><b>Exemple :</b> ${ang('MOZ')} + ${ang('ZOT')} = 100° + 80° = 180°. Ils sont supplémentaires.</p>
+  <div class="astuce say">💡 <b>S</b> comme <b>S</b>ur une droite : 180°, c’est un angle plat.<br>Pour trouver l’autre angle : <b>180 − l’angle connu</b>.</div>`,
+  m:c=>mountSplit(c,180),q:{p:'Un angle mesure 120°. Son supplémentaire mesure…',o:['60°','70°','80°'],e:'180 − 120 = 60.'}},
+ {t:'6. Parallèles coupées par une sécante',h:`
+  <p class="say">Une <span class="kw">sécante</span>, c’est une droite qui <b>coupe</b> les deux droites (d) et (d′).</p>
+  <p class="say">🟨 <b>Alternes-internes</b> = de chaque côté de la sécante (alternes) et <b>entre</b> les deux droites (internes). Ils dessinent un <b>Z</b>.</p>
+  <p class="say">🟨 <b>Correspondants</b> = à la <b>même place</b> sur chaque croisement. Ils dessinent un <b>F</b>.</p>
+  <div class="w"></div>
+  <div class="def prop say"><span class="tag noread">Propriété ❤️</span><br><b>Si</b> deux droites <b>parallèles</b> sont coupées par une sécante, <b>alors</b> les angles <b>alternes-internes</b> qu’elles forment ont la <b>même mesure</b>.</div>
+  <div class="def prop say"><span class="tag noread">Propriété ❤️</span><br><b>Si</b> deux droites <b>parallèles</b> sont coupées par une sécante, <b>alors</b> les angles <b>correspondants</b> qu’elles forment ont la <b>même mesure</b>.</div>
+  <div class="astuce say">⚠️ Ça marche <b>seulement si les droites sont parallèles</b>. Essaie le bouton « Droites pas parallèles » pour voir !</div>`,
+  m:c=>mountPar(c,true),q:{p:'Pour utiliser ces propriétés, les droites doivent être…',o:['parallèles','perpendiculaires','de même longueur'],e:'Parallèles, sinon les angles ne sont pas égaux.'}},
+ {t:'7. Je rédige comme au cahier',h:`
+  <p class="say">Pour <b>prouver</b> que deux angles ont la même mesure, on écrit toujours en <b>3 étapes</b> :</p>
+  <div class="dpc"><div class="col c-d say"><h4>On sait que</h4>Les angles ${ang('BOA')} et ${ang('DOE')} sont opposés par le sommet.</div><div class="arrow">➜</div>
+   <div class="col c-p say"><h4>Propriété</h4>Si deux angles sont opposés par le sommet, alors ils ont la même mesure.</div><div class="arrow">➜</div>
+   <div class="col c-c say"><h4>On peut conclure</h4>Donc ${ang('BOA')} = ${ang('DOE')}.</div></div>
+  <div class="astuce say">💡 <b>1.</b> Ce que je vois (les données). <b>2.</b> La règle « Si… alors… ». <b>3.</b> Donc… (la réponse).</div>`,
+  m:null,q:{p:'Dans la colonne « Propriété », on écrit…',o:['une phrase « Si… alors… »','la mesure de l’angle cherché','le nom des points de la figure'],e:'La propriété, c’est la règle du cours : « Si… alors… ».'}}];
+let ci=0;
+function renderCard(){
+ const c=CARDS[ci];const b=$('#cbody');b.innerHTML='';
+ const card=H(`<div class="card"><h2>${c.t}</h2>${c.h}<h3 class="noprint">🎯 Je vérifie</h3><div class="chk"></div></div>`);b.appendChild(card);
+ if(c.m)c.m($('.w',card));addSpeak(card);
+ mcq($('.chk',card),{prompt:c.q.p,options:c.q.o.map((t,k)=>({t,ok:k===0})),explain:c.q.e,hint:'Relis l’encadré juste au-dessus.'});
+ $('#cprog').style.width=((ci+1)/CARDS.length*100)+'%';
+ $('#cprev').style.visibility=ci===0?'hidden':'visible';
+ $('#cnext').textContent=ci===CARDS.length-1?'Je m’exerce ✏️':'Suivant ▶';
+ $('#ttl').textContent='Cours '+(ci+1)+' / '+CARDS.length;store.set('card',ci);}
+$('#cprev').onclick=()=>{if(ci>0){ci--;renderCard();window.scrollTo(0,0);}};
+$('#cnext').onclick=()=>{if(ci<CARDS.length-1){ci++;renderCard();window.scrollTo(0,0);}else go('exos');};
+
+/* ================== LABO ================== */
+function renderLab(t){$$('#labTabs .btn').forEach(b=>b.classList.toggle('on',b.dataset.t===t));const L=$('#labBody');L.innerHTML='';const c=H('<div class="card"></div>');L.appendChild(c);
+ const intro={x:'<h3 class="say">✂️ Deux droites qui se croisent</h3><p class="say">Les angles face à face sont <b>opposés par le sommet</b>. Ils ont toujours la même mesure.</p>',
+  c90:'<h3 class="say">📐 Complémentaires : total 90°</h3><p class="say">Un angle droit est coupé en deux. Les deux morceaux font toujours 90° ensemble.</p>',
+  c180:'<h3 class="say">➖ Supplémentaires : total 180°</h3><p class="say">Un angle plat est coupé en deux. Les deux morceaux font toujours 180° ensemble.</p>',
+  par:'<h3 class="say">🛤️ Parallèles et sécante</h3><p class="say">Choisis Z ou F. Regarde les deux angles colorés. Puis essaie avec des droites pas parallèles.</p>'}[t];
+ c.innerHTML=intro;const w=H('<div></div>');c.appendChild(w);addSpeak(c);
+ ({x:mountX,c90:x=>mountSplit(x,90),c180:x=>mountSplit(x,180),par:x=>mountPar(x,true)})[t](w);}
+$$('#labTabs .btn').forEach(b=>b.onclick=()=>renderLab(b.dataset.t));
+
+/* ================== EXERCICES / DÉFI ================== */
+function refreshBest(){$$('.best').forEach(s=>{const v=store.get('best_'+s.dataset.k,null);s.textContent=v===null?'':'Meilleur score : '+v+' / 5';});}
+$$('[data-ex]').forEach(b=>b.onclick=()=>{const k=b.dataset.ex;$('#exMenu').style.display='none';const R=$('#exRun');R.style.display='block';
+ runSeries(R,{title:EXTITLE[k],gen:()=>GENS[k](),n:5,key:k,onQuit:()=>go('exos')});window.scrollTo(0,0);});
+function startDefi(){runSeries($('#defiRun'),{title:'🏆 Le grand défi',gen:i=>{const pool=[genRecog,genComp,genPar,genDef,genDef,genRecog,genComp,genPar,genDef,genRedac];return pool[(i*7+rint(0,9))%pool.length]();},n:10,key:'defi',onQuit:()=>go('home')});}
+
+/* ================== FICHE MÉMO ================== */
+function renderMemo(){const M=$('#memoBody');M.innerHTML='';
+ const add=(title,html,svg)=>{const c=H(`<div class="card"><h3>${title}</h3>${html}</div>`);if(svg)c.appendChild(wrapFig(svg));M.appendChild(c);addSpeak(c);};
+ add('Adjacents (voisins)','<p class="say">Même sommet + un côté commun + chacun de son côté.</p>',figAdj(false,{s2:true}));
+ add('Opposés par le sommet (X)','<p class="say">Face à face. <b>Propriété :</b> ils ont la <b>même mesure</b>.</p>',figX(20,85,0).svg);
+ add('Complémentaires (C = Coin)','<p class="say">Somme = <b>90°</b>. Autre angle = 90 − angle connu.</p>',splitFig(90,40).svg);
+ add('Supplémentaires (S = Sur une droite)','<p class="say">Somme = <b>180°</b>. Autre angle = 180 − angle connu.</p>',splitFig(180,100).svg);
+ add('Alternes-internes (Z)','<p class="say">Si (d) // (d′) : <b>même mesure</b>.</p>',parFig(55,['A',2],['B',0],'55°','55°',{hl:'alt'}));
+ add('Correspondants (F)','<p class="say">Si (d) // (d′) : <b>même mesure</b>.</p>',parFig(55,['A',0],['B',0],'55°','55°',{hl:'corr'}));
+ add('Je rédige en 3 étapes','<div class="dpc" style="grid-template-columns:1fr"><div class="col c-d say"><h4>1. On sait que…</h4>les données de la figure</div><div class="col c-p say"><h4>2. Propriété</h4>Si … alors …</div><div class="col c-c say"><h4>3. On peut conclure</h4>Donc …</div></div>');}
+
+/* ================== NAVIGATION & RÉGLAGES ================== */
+function go(id){try{speechSynthesis.cancel();}catch(e){}
+ $$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo(0,0);
+ const T={home:'Les angles',labo:'Je manipule',exos:'Je m’exerce',defi:'Je m’entraîne',memo:'Fiche mémo'};
+ if(id==='cours'){renderCard();}else $('#ttl').textContent=T[id];
+ if(id==='labo')renderLab('x');
+ if(id==='exos'){$('#exMenu').style.display='block';$('#exRun').style.display='none';refreshBest();}
+ if(id==='defi')startDefi();
+ if(id==='memo')renderMemo();
+ try{history.replaceState(null,'','#'+id);}catch(e){}}
+$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+$('#homeBtn').onclick=()=>go('home');
+let fs=store.get('fs',21);const applyFs=()=>document.documentElement.style.setProperty('--fs',fs+'px');applyFs();
+$('#fsMinus').onclick=()=>{fs=Math.max(16,fs-2);applyFs();store.set('fs',fs);};
+$('#fsPlus').onclick=()=>{fs=Math.min(30,fs+2);applyFs();store.set('fs',fs);};
+if(store.get('sp',false))document.body.classList.add('spaced');
+$('#spBtn').onclick=()=>{document.body.classList.toggle('spaced');store.set('sp',document.body.classList.contains('spaced'));};
+ci=Math.min(store.get('card',0),CARDS.length-1);
+addSpeak($('#home'));addSpeak($('#exMenu'));
+const h=(location.hash||'').slice(1);if(['cours','labo','exos','defi','memo'].includes(h))go(h);
+</script>
+</body>
+</html>
